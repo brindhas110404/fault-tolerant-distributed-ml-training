@@ -1,0 +1,21 @@
+.venv/
+project3/
+data/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+results/docker/*.npz
+
+# Local artifacts and private configuration
+backups/
+*_backup.py
+*.save
+*.npz
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+results/*.log
+*.backup

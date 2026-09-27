@@ -1,0 +1,79 @@
+{
+  "passed": true,
+  "target_seconds": 8,
+  "interval_seconds": 1,
+  "ping_timeout_seconds": 0.5,
+  "consecutive_failures": 3,
+  "trials": [
+    {
+      "mode": "server_stop",
+      "phase_seconds": 0.0,
+      "detection_seconds": {
+        "1": 2.9113164159934968
+      }
+    },
+    {
+      "mode": "server_stop",
+      "phase_seconds": 0.35,
+      "detection_seconds": {
+        "1": 2.558892792003462
+      }
+    },
+    {
+      "mode": "server_stop",
+      "phase_seconds": 0.7,
+      "detection_seconds": {
+        "1": 2.2081748750060797
+      }
+    },
+    {
+      "mode": "rpc_timeout",
+      "phase_seconds": 0.0,
+      "detection_seconds": {
+        "1": 3.4088462090003304
+      }
+    },
+    {
+      "mode": "rpc_timeout",
+      "phase_seconds": 0.35,
+      "detection_seconds": {
+        "1": 3.0570853750105016
+      }
+    },
+    {
+      "mode": "rpc_timeout",
+      "phase_seconds": 0.7,
+      "detection_seconds": {
+        "1": 2.7063959169900045
+      }
+    },
+    {
+      "mode": "simultaneous_timeouts",
+      "phase_seconds": 0.0,
+      "detection_seconds": {
+        "1": 3.408082000009017,
+        "2": 3.4080852500046603
+      }
+    },
+    {
+      "mode": "simultaneous_timeouts",
+      "phase_seconds": 0.35,
+      "detection_seconds": {
+        "1": 3.0628352079947945,
+        "2": 3.062838540994562
+      }
+    },
+    {
+      "mode": "simultaneous_timeouts",
+      "phase_seconds": 0.7,
+      "detection_seconds": {
+        "1": 2.7095292919839267,
+        "2": 2.7095350839954335
+      }
+    }
+  ],
+  "maximum_seconds": 3.4088462090003304,
+  "median_seconds": 2.984200895501999,
+  "notifications": 12,
+  "scope": "local real gRPC; fail-stop and RPC timeout scenarios; includes simultaneous peer failures"
+}

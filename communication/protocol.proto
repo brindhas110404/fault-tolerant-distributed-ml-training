@@ -1,0 +1,32 @@
+syntax = "proto3";
+package distributed;
+service WorkerService {
+ rpc SendTensor(TensorMessage) returns (TensorResponse);
+ rpc Ping(PingRequest) returns (PingResponse);
+ rpc TrainStep(TrainStepRequest) returns (TrainStepResponse);
+ rpc Configure(ConfigureRequest) returns (Ack);
+ rpc AbortStep(StepControl) returns (Ack);
+ rpc CommitStep(StepControl) returns (Ack);
+ rpc GetState(PingRequest) returns (StateResponse);
+}
+service CoordinatorService {
+ rpc RegisterWorker(RegisterWorkerRequest) returns (RegisterWorkerResponse);
+ rpc StartTraining(TrainingRequest) returns (TrainingResponse);
+ rpc GetClusterStatus(ClusterStatusRequest) returns (ClusterStatusResponse);
+}
+message TensorMessage { int32 source=1; int32 round=2; int32 phase=3; int32 chunk=4; bytes payload=5; repeated int32 shape=6; string op_id=7; bool request_only=8; }
+message TensorResponse { bytes payload=1; repeated int32 shape=2; }
+message PingRequest { int32 worker_id=1; }
+message PingResponse { bool ok=1; }
+message TrainStepRequest { int32 batch_size=1; string token=2; int64 step=3; }
+message TrainStepResponse { double loss=1; double compute_time=2; double communication_time=3; bytes state=4; string digest=5; int32 samples=6; }
+message ConfigureRequest { string token=1; repeated string endpoints=2; int32 rank=3; bytes state=4; string dataset=5; string expected_digest=6; }
+message StepControl { string token=1; }
+message Ack { bool ok=1; }
+message StateResponse { bytes state=1; string digest=2; string dataset=3; }
+message RegisterWorkerRequest { int32 worker_id=1; string endpoint=2; }
+message RegisterWorkerResponse { bool accepted=1; string message=2; }
+message TrainingRequest { int32 steps=1; int32 batch_size=2; }
+message TrainingResponse { bool accepted=1; string message=2; int32 completed_steps=3; repeated double mean_losses=4; int32 recoveries=5; repeated int32 active_workers=6; double elapsed_seconds=7; int64 total_steps=8; string model_digest=9; }
+message ClusterStatusRequest {}
+message ClusterStatusResponse { int32 expected_workers=1; repeated int32 registered_workers=2; bool ready=3; }

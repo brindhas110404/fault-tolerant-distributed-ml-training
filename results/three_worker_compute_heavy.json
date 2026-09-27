@@ -1,0 +1,278 @@
+{
+  "dataset": "cifar10",
+  "steps": 10,
+  "warmup_steps": 2,
+  "repeats": 3,
+  "global_batch_size": 8192,
+  "cpu_limit_per_container": 1,
+  "host": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "docker": {
+    "ServerVersion": "29.7.2",
+    "NCPU": 8,
+    "MemTotal": 4106604544,
+    "Architecture": "aarch64",
+    "OperatingSystem": "Docker Desktop"
+  },
+  "image": "sha256:c2c36c69987e9a508398436406159b37923f2927282504dffdd5d55ed3fa7b24",
+  "method": "separate Docker containers on one host; median wall time; fixed global workload",
+  "rows": [
+    {
+      "workers": 1,
+      "median_seconds": 34.07221158401808,
+      "runs": [
+        {
+          "seconds": 34.07221158401808,
+          "result": {
+            "accepted": true,
+            "message": "training completed",
+            "completed_steps": 10,
+            "mean_losses": [
+              2.2711874488497514,
+              2.2499655257867603,
+              2.2266443483034513,
+              2.205037669451135,
+              2.1805143734966093,
+              2.1747831139594522,
+              2.150886297654541,
+              2.14500811327387,
+              2.1340146007889222,
+              2.121723351382796
+            ],
+            "active_workers": [
+              0
+            ],
+            "elapsed_seconds": 34.052274849000014,
+            "total_steps": "12",
+            "model_digest": "444130e6ed6c1acbaa51fee2b2949a1bc2f3df193b3dc023c4e9316262729cc7",
+            "recoveries": 0
+          },
+          "profile": {
+            "Ping_seconds": 0.0008809170000176891,
+            "Configure_seconds": 0.05752279100005353,
+            "TrainStep_seconds": 33.66428880699999,
+            "mean_worker_compute_time_seconds": 33.43353405600004,
+            "mean_worker_communication_time_seconds": 0.03817433200003961,
+            "CommitStep_seconds": 0.03169033399996124,
+            "checkpoint_seconds": 0.09212121000001616
+          },
+          "test_samples": 10000,
+          "test_loss": 2.106399848177645,
+          "test_accuracy": 0.2465
+        },
+        {
+          "seconds": 34.060523332998855,
+          "result": {
+            "accepted": true,
+            "message": "training completed",
+            "completed_steps": 10,
+            "mean_losses": [
+              2.2711874488497514,
+              2.2499655257867603,
+              2.2266443483034513,
+              2.205037669451135,
+              2.1805143734966093,
+              2.1747831139594522,
+              2.150886297654541,
+              2.14500811327387,
+              2.1340146007889222,
+              2.121723351382796
+            ],
+            "active_workers": [
+              0
+            ],
+            "elapsed_seconds": 34.04260101599999,
+            "total_steps": "12",
+            "model_digest": "444130e6ed6c1acbaa51fee2b2949a1bc2f3df193b3dc023c4e9316262729cc7",
+            "recoveries": 0
+          },
+          "profile": {
+            "Ping_seconds": 0.0009959170000115591,
+            "Configure_seconds": 0.05352029300001959,
+            "TrainStep_seconds": 33.66343684900005,
+            "mean_worker_compute_time_seconds": 33.437303972999985,
+            "mean_worker_communication_time_seconds": 0.04016641699996626,
+            "CommitStep_seconds": 0.027018375999944055,
+            "checkpoint_seconds": 0.08227624999994987
+          },
+          "test_samples": 10000,
+          "test_loss": 2.106399848177645,
+          "test_accuracy": 0.2465
+        },
+        {
+          "seconds": 35.25766545798979,
+          "result": {
+            "accepted": true,
+            "message": "training completed",
+            "completed_steps": 10,
+            "mean_losses": [
+              2.2711874488497514,
+              2.2499655257867603,
+              2.2266443483034513,
+              2.205037669451135,
+              2.1805143734966093,
+              2.1747831139594522,
+              2.150886297654541,
+              2.14500811327387,
+              2.1340146007889222,
+              2.121723351382796
+            ],
+            "active_workers": [
+              0
+            ],
+            "elapsed_seconds": 35.19654338999999,
+            "total_steps": "12",
+            "model_digest": "444130e6ed6c1acbaa51fee2b2949a1bc2f3df193b3dc023c4e9316262729cc7",
+            "recoveries": 0
+          },
+          "profile": {
+            "Ping_seconds": 0.0010802080000189562,
+            "Configure_seconds": 0.06441041799996583,
+            "TrainStep_seconds": 34.73469109900009,
+            "mean_worker_compute_time_seconds": 34.44088893000003,
+            "mean_worker_communication_time_seconds": 0.04671762600008833,
+            "CommitStep_seconds": 0.03135108300000411,
+            "checkpoint_seconds": 0.10495387499992148
+          },
+          "test_samples": 10000,
+          "test_loss": 2.106399848177645,
+          "test_accuracy": 0.2465
+        }
+      ],
+      "speedup": 1.0,
+      "efficiency": 1.0,
+      "samples_per_second": 2404.3053324553025
+    },
+    {
+      "workers": 3,
+      "median_seconds": 13.154778291005641,
+      "runs": [
+        {
+          "seconds": 13.021831291000126,
+          "result": {
+            "accepted": true,
+            "message": "training completed",
+            "completed_steps": 10,
+            "mean_losses": [
+              2.2711874488497514,
+              2.2499655257867603,
+              2.2266443483034513,
+              2.205037669451135,
+              2.180514373496609,
+              2.1747831139594522,
+              2.1508862976545413,
+              2.1450081132738696,
+              2.1340146007889222,
+              2.121723351382796
+            ],
+            "active_workers": [
+              0,
+              1,
+              2
+            ],
+            "elapsed_seconds": 13.00677054700003,
+            "total_steps": "12",
+            "model_digest": "50fee4d3a732f0df589defd24514dd917eef2ce71ab6b54e221306f6c72cf177",
+            "recoveries": 0
+          },
+          "profile": {
+            "Ping_seconds": 0.0012782499999843822,
+            "Configure_seconds": 0.07719499899991433,
+            "TrainStep_seconds": 12.429575713999952,
+            "mean_worker_compute_time_seconds": 11.594748907000033,
+            "mean_worker_communication_time_seconds": 0.6613300563332699,
+            "CommitStep_seconds": 0.02519091699997489,
+            "checkpoint_seconds": 0.06113254099983578
+          },
+          "test_samples": 10000,
+          "test_loss": 2.106399848177645,
+          "test_accuracy": 0.2465
+        },
+        {
+          "seconds": 13.154778291005641,
+          "result": {
+            "accepted": true,
+            "message": "training completed",
+            "completed_steps": 10,
+            "mean_losses": [
+              2.2711874488497514,
+              2.2499655257867603,
+              2.2266443483034513,
+              2.205037669451135,
+              2.180514373496609,
+              2.1747831139594522,
+              2.1508862976545413,
+              2.14500811327387,
+              2.1340146007889222,
+              2.121723351382796
+            ],
+            "active_workers": [
+              0,
+              1,
+              2
+            ],
+            "elapsed_seconds": 13.138457338999956,
+            "total_steps": "12",
+            "model_digest": "50fee4d3a732f0df589defd24514dd917eef2ce71ab6b54e221306f6c72cf177",
+            "recoveries": 0
+          },
+          "profile": {
+            "Ping_seconds": 0.0013942080000219903,
+            "Configure_seconds": 0.07200516799997558,
+            "TrainStep_seconds": 12.557456424000009,
+            "mean_worker_compute_time_seconds": 11.676713797333319,
+            "mean_worker_communication_time_seconds": 0.7066643059999932,
+            "CommitStep_seconds": 0.025948957999844424,
+            "checkpoint_seconds": 0.06686541600004148
+          },
+          "test_samples": 10000,
+          "test_loss": 2.106399848177645,
+          "test_accuracy": 0.2465
+        },
+        {
+          "seconds": 13.279232333006803,
+          "result": {
+            "accepted": true,
+            "message": "training completed",
+            "completed_steps": 10,
+            "mean_losses": [
+              2.2711874488497514,
+              2.2499655257867603,
+              2.2266443483034513,
+              2.205037669451135,
+              2.180514373496609,
+              2.1747831139594522,
+              2.1508862976545413,
+              2.14500811327387,
+              2.134014600788922,
+              2.121723351382796
+            ],
+            "active_workers": [
+              0,
+              1,
+              2
+            ],
+            "elapsed_seconds": 13.252971298000034,
+            "total_steps": "12",
+            "model_digest": "50fee4d3a732f0df589defd24514dd917eef2ce71ab6b54e221306f6c72cf177",
+            "recoveries": 0
+          },
+          "profile": {
+            "Ping_seconds": 0.004040959000008115,
+            "Configure_seconds": 0.0981732930000021,
+            "TrainStep_seconds": 12.624715088999892,
+            "mean_worker_compute_time_seconds": 11.732179033333335,
+            "mean_worker_communication_time_seconds": 0.7013127230000009,
+            "CommitStep_seconds": 0.03125554100000727,
+            "checkpoint_seconds": 0.06796087500003978
+          },
+          "test_samples": 10000,
+          "test_loss": 2.106399848177645,
+          "test_accuracy": 0.2465
+        }
+      ],
+      "speedup": 2.5901015456348953,
+      "efficiency": 0.8633671818782984,
+      "samples_per_second": 6227.3949577707
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "recorded_at": "2026-09-26T20:35:38.952891+00:00",
+  "local_tests": {
+    "passed": 19,
+    "failed": 0,
+    "report": "results/tests.xml"
+  },
+  "docker_tests": {
+    "passed": 19,
+    "failed": 0
+  },
+  "fault_campaign": "results/fault_validation.json",
+  "docker_recovery": "results/docker_recovery.json",
+  "benchmarks": [
+    "results/docker_benchmark_digits.json",
+    "results/docker_benchmark_cifar10.json"
+  ],
+  "source_sha256": {
+    "worker/worker.py": "c057e66478218c07f889b415c6d3e811f870fe32253a3fe54f941bce3372d966",
+    "worker/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "worker/model.py": "e73601e60d9d26e22e7d4311a04d9c93cc53d20745e9ef6e93bba903efa1067a",
+    "worker/dataset.py": "8d84dc805a0f0c3f466bd818072e6da29c14644a9b7a9e65c0da6d9cb234f80b",
+    "worker/worker_backup.py": "3e15bdb1521e00bd90e7c99c3a74461f499afa681835a2be002b8688395aad48",
+    "worker/optimizer.py": "4b226792423deabc3024a215154fcb7e7eb99ea9e9edc26805a760717f920cf1",
+    "worker/exceptions.py": "12ac3f51126607b92fa091f8d3899d2ffcfb87c8be540a5c716cf53f811f92bd",
+    "worker/heartbeat.py": "a258df481230f5d7a010d63adc2a772535183c5bbbd869da4b962bce7c004238",
+    "worker/layers.py": "0291e18ee1395108c071402514573a07bd39ad263c22b80ea6613a96224520ab",
+    "worker/prepare_cifar.py": "52533d2a01095225ec4c88b23b53349908fff6728eec945e79db2e1b05870cb0",
+    "worker/training.py": "17d8e104876522df68de481687b41fe489b50f35102f528c30772b0ea21369e8",
+    "coordinator/coordinator.py": "1387f78adb7ffcd43018a8445bb05ceb003cbf417b967ecc32095eff61b1642b",
+    "coordinator/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "communication/ring_allreduce.py": "5459f48d3c6af68789a009ac61957643ef911191892ee6bbd7357c04546b2328",
+    "communication/grpc_server.py": "370f311d7e7ccde5a9aefefa6223cbf7b3485d170b0c4a72fe796fbe56207ed0",
+    "communication/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "communication/protocol_pb2.py": "6b9add36d5deb39f7163ab9a105232ad8c6572b8eea2642afcb2d874e86c38f8",
+    "communication/protocol_pb2_grpc.py": "029067f246871a9e958a0e1afe5b48eddf3370b2d057f22232f6cb5147aa8930",
+    "communication/grpc_server_backup.py": "44de34bc499cd7820a2dcacc6372e67cda136705d47820a4cceb17778d2c2a74",
+    "communication/ring_allreduce_backup.py": "82ca8b0307770c61e37d0f6a82df89a13c843b27901c04e53489640c3b425f5f",
+    "communication/serialization.py": "da26b318d1699c0eb50910cfde26977dabd58506b85bbb26e231b5df89280620",
+    "client/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "client/train_cluster.py": "4197d0f0d4e57ad379a03b34350e219f0c3f59161b3618108eefdb624e3dacb2",
+    "experiments/scaling.py": "ee311985b927e4a0ca15732bf07109c5780a5af01e1b4e0c6dfa868394bffb12",
+    "experiments/benchmark.py": "287d096164c1fbf4c339db462623f864a32acbbc7f91bc71f4b8e81a9acd634d",
+    "experiments/docker_benchmark.py": "58f52c4309c2798ee744e7a0030a978c46f9cb9ac7de0586e66032a8ebebdba3",
+    "experiments/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "experiments/evaluate_cluster.py": "2d59277c1d3eed6cd838f4ea3c89849f17493101c19d172c8045129b38159d98",
+    "experiments/fault_validation.py": "2117da8a455a0d3304ae12876ff16acfec64e96980eaa3e38fad516911edfb30",
+    "experiments/local_cluster.py": "644cefc60239e45694d1599a808f4f7392e64f247dbc7d2aec8f6729ed14d8d3",
+    "experiments/plot_docker_results.py": "9953d4f18d99ec1a11de767834289db8c0775e2d232eccb2c2fe4034d217e34d",
+    "experiments/plot_results.py": "e97e84632f35182f02b86cd5cbbf6564fe8e1ab09e3878ef9edfec550ecdbf37",
+    "experiments/docker_recovery.py": "af907371daa677d6410ab85e9135de8bc3e74c5ec8cef8a6c5ed929782819030",
+    "tests/test_model.py": "65effa8379e8765921172ae2849b86b2e612c1880a33827c37d268543da358af",
+    "tests/test_coordinator_training.py": "8f502c3f9938fa8a6326a1dfef7fa64f22d0700ba13f9e4dc4853df3c76c6e28",
+    "tests/test_ring_grpc.py": "bc969099a44f2b1d451df4dcc56209b4294b62abc9fc2415dfd74ae329dfcb46",
+    "tests/test_worker_cli.py": "410f1f76f4b7eed80c25e1ef83038b4c4510c38909a43810089f15e02e341780",
+    "tests/test_layer.py": "8929182438b5181b164293df11076f3d78640f20b406b3f65519807a693596a8",
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/test_transactions.py": "e65cb2ce3b119d2834a057ba2745adafdd8339f27779f3161065c0f7b06fa6e8",
+    "tests/test_dataset.py": "8273b01c2e652ee6546680cdd8024ec2e75a2ac23c8459c7f89941d915175284",
+    "tests/test_fault_tolerance.py": "62a38771ab3e951ffeff81deaaf26cc8868a174ac9c67d7090df04930a8f1d2b",
+    "tests/test_ping.py": "3ceed18ac8f0390fcb238ddb579127c4175c39d8f9720fdec09ed57f4e544bb6",
+    "tests/test_allreduce.py": "3dc17f2a43c82b0bc51499fa21321afc1dbcf03e0dad6ae6c44ad4f8e5904694"
+  },
+  "cifar10_training": "results/cifar10_training.json",
+  "cifar10_evaluation": {
+    "dataset": "cifar10",
+    "model_digest": "20b99fd7881b7053d60c98e28352b476f40ebb68aafb04bc19c549d2bad61008",
+    "test_samples": 10000,
+    "test_loss": 1.563446633709217,
+    "test_accuracy": 0.4546
+  },
+  "cifar10_consistency": {
+    "passed": true,
+    "workers": 4,
+    "max_absolute_difference": 0.0
+  }
+}

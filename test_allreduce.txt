@@ -1,0 +1,241 @@
+import numpy as np
+import threading
+
+from worker.worker import DistributedWorker
+from communication.grpc_server import serve
+
+
+# =========================================================
+# Configuration
+# =========================================================
+
+world_size = 3
+
+host = "127.0.0.1"
+
+base_port = 50060
+
+endpoints = {
+    0: "127.0.0.1:50060",
+    1: "127.0.0.1:50061",
+    2: "127.0.0.1:50062",
+}
+
+
+# =========================================================
+# Test tensors
+# =========================================================
+
+tensors = {
+    0: np.array([1.0, 2.0, 3.0]),
+    1: np.array([2.0, 3.0, 4.0]),
+    2: np.array([3.0, 4.0, 5.0]),
+}
+
+
+expected = np.array(
+    [2.0, 3.0, 4.0]
+)
+
+
+# =========================================================
+# Create workers
+# =========================================================
+
+workers = {}
+
+servers = {}
+
+for rank in range(world_size):
+
+    worker = DistributedWorker(
+        worker_id=rank,
+        world_size=world_size,
+        endpoints=endpoints
+    )
+
+    workers[rank] = worker
+
+    server = serve(
+        worker,
+        host,
+        base_port + rank
+    )
+
+    servers[rank] = server
+
+
+print()
+print("Started 3 test workers.")
+print()
+
+
+# =========================================================
+# Barrier
+# =========================================================
+
+barrier = threading.Barrier(
+    world_size
+)
+
+results = {}
+
+errors = {}
+
+
+# =========================================================
+# Run AllReduce
+# =========================================================
+
+def run_worker(rank):
+
+    try:
+
+        print(
+            f"Worker {rank} ready"
+        )
+
+        barrier.wait()
+
+        print(
+            f"Worker {rank} starting AllReduce"
+        )
+
+        result = workers[rank].ring.allreduce(
+            tensors[rank]
+        )
+
+        results[rank] = result
+
+        print(
+            f"Worker {rank} result: "
+            f"{result}"
+        )
+
+    except Exception as error:
+
+        errors[rank] = error
+
+        print(
+            f"Worker {rank} ERROR:"
+        )
+
+        print(
+            repr(error)
+        )
+
+
+# =========================================================
+# Start threads
+# =========================================================
+
+threads = []
+
+for rank in range(world_size):
+
+    thread = threading.Thread(
+        target=run_worker,
+        args=(rank,)
+    )
+
+    threads.append(thread)
+
+    thread.start()
+
+
+# =========================================================
+# Wait for workers
+# =========================================================
+
+for thread in threads:
+
+    thread.join()
+
+
+# =========================================================
+# Stop servers
+# =========================================================
+
+for server in servers.values():
+
+    server.stop(0)
+
+
+# =========================================================
+# Results
+# =========================================================
+
+print()
+print("Results:")
+print()
+
+for rank in range(world_size):
+
+    if rank in results:
+
+        print(
+            f"Worker {rank}: "
+            f"{results[rank]}"
+        )
+
+    else:
+
+        print(
+            f"Worker {rank}: FAILED"
+        )
+
+
+# =========================================================
+# Errors
+# =========================================================
+
+if errors:
+
+    print()
+    print("Errors:")
+    print()
+
+    for rank, error in errors.items():
+
+        print(
+            f"Worker {rank}: "
+            f"{repr(error)}"
+        )
+
+    raise SystemExit(
+        "AllReduce test failed."
+    )
+
+
+# =========================================================
+# Validate
+# =========================================================
+
+print()
+print("Checking results...")
+print()
+
+for rank in range(world_size):
+
+    assert np.allclose(
+        results[rank],
+        expected
+    ), (
+        f"Worker {rank} got "
+        f"{results[rank]}, "
+        f"expected {expected}"
+    )
+
+    print(
+        f"Worker {rank}: PASS"
+    )
+
+
+# =========================================================
+# Final result
+# =========================================================
+
+print()
+print("================================")
+print("ALLREDUCE TEST PASSED")
+print("================================")

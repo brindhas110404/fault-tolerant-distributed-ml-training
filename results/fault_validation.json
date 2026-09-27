@@ -1,0 +1,19 @@
+{
+  "operations": 1000,
+  "seed": 2026,
+  "passed": true,
+  "counts": {
+    "prepare": 40,
+    "healthy": 800,
+    "allreduce": 40,
+    "commit_before": 40,
+    "commit_after": 40,
+    "server_outage": 40
+  },
+  "recoveries": 200,
+  "max_absolute_error": 8.881784197001252e-16,
+  "elapsed_seconds": 70.90873691698653,
+  "transport": "real loopback gRPC, four workers in one Python process",
+  "oracle": "serial SGD with identical global batches",
+  "scope": "transient RPC faults and worker service outages; not network partitions or coordinator crashes"
+}

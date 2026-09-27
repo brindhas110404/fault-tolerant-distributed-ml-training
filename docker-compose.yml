@@ -1,0 +1,29 @@
+x-common: &common
+  build: .
+  image: project3-training:local
+  environment:
+    OPENBLAS_NUM_THREADS: '1'
+    OMP_NUM_THREADS: '1'
+    DATASET: ${DATASET:-digits}
+  volumes:
+    - ./data:/app/data:ro
+  cpus: 1.0
+services:
+  coordinator:
+    <<: *common
+    command: python -m coordinator.coordinator --workers 4 --worker-endpoints worker0:50060,worker1:50061,worker2:50062,worker3:50063 --dataset ${DATASET:-digits} --checkpoint /app/results/checkpoint-${DATASET:-digits}.npz
+    ports: ['50050:50050']
+    volumes:
+      - ./results/docker:/app/results
+  worker0:
+    <<: *common
+    command: python -m worker.worker --worker-id 0 --world-size 4 --port 50060 --endpoints worker0:50060,worker1:50061,worker2:50062,worker3:50063 --coordinator coordinator:50050 --dataset ${DATASET:-digits}
+  worker1:
+    <<: *common
+    command: python -m worker.worker --worker-id 1 --world-size 4 --port 50061 --endpoints worker0:50060,worker1:50061,worker2:50062,worker3:50063 --coordinator coordinator:50050 --dataset ${DATASET:-digits}
+  worker2:
+    <<: *common
+    command: python -m worker.worker --worker-id 2 --world-size 4 --port 50062 --endpoints worker0:50060,worker1:50061,worker2:50062,worker3:50063 --coordinator coordinator:50050 --dataset ${DATASET:-digits}
+  worker3:
+    <<: *common
+    command: python -m worker.worker --worker-id 3 --world-size 4 --port 50063 --endpoints worker0:50060,worker1:50061,worker2:50062,worker3:50063 --coordinator coordinator:50050 --dataset ${DATASET:-digits}

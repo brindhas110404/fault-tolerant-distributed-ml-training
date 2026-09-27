@@ -1,0 +1,7 @@
+{
+  "dataset": "cifar10",
+  "model_digest": "20b99fd7881b7053d60c98e28352b476f40ebb68aafb04bc19c549d2bad61008",
+  "test_samples": 10000,
+  "test_loss": 1.563446633709217,
+  "test_accuracy": 0.4546
+}
